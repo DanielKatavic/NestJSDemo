@@ -23,12 +23,12 @@ export class ProductService {
     return deletedProduct;
   }
 
-  async create(createProductDto: ProductDto) {
-    const createdProduct = new this.productModel(createProductDto);
+  async create(productDto: ProductDto) {
+    const createdProduct = new this.productModel(productDto);
     return createdProduct.save();
   }
 
-  async update(id: string, createProductDto: ProductDto) {
-    return this.productModel.findByIdAndUpdate(id, createProductDto).exec();
+  async update(id: string, productDto: ProductDto) {
+    return this.productModel.findByIdAndUpdate(id, productDto).exec();
   }
 }

@@ -1,11 +1,13 @@
 import { Controller, Delete, Get, Post } from '@nestjs/common';
 import { CartItemService } from './cart-item.service';
 import { CartItemDto } from './cart-item.model';
+import { Public } from 'src/auth/decorators/public.decorator';
 
 @Controller('cart-items')
 export class CartItemController {
   constructor(private readonly cartItemService: CartItemService) {}
 
+  @Public()
   @Get()
   getCartItems() {
     return this.cartItemService.findAll();

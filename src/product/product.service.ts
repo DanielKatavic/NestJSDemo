@@ -10,8 +10,16 @@ export class ProductService {
     @InjectModel(Product.name) private readonly productModel: Model<Product>,
   ) {}
 
-  async findAll() {
-    return this.productModel.find().exec();
+  async findAll(pageSize: string, sort: string, category = 'Odjeca') {
+    return await this.productModel
+      .find({ category: category })
+      .limit(+pageSize)
+      .sort(sort)
+      .exec();
+  }
+
+  async findByCategory(category: string) {
+    return this.productModel.findOne({ category: category });
   }
 
   async findById(id: string) {
@@ -19,7 +27,7 @@ export class ProductService {
   }
 
   async delete(id: string) {
-    const deletedProduct = this.productModel.findByIdAndDelete(id).exec();
+    const deletedProduct = this.productModel.deleteOne({ id: id }).exec();
     return deletedProduct;
   }
 

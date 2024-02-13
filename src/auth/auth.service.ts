@@ -13,7 +13,7 @@ export class AuthService {
   async login(userDto: User) {
     const user = await this.userService.findOne(userDto);
 
-    if (!user) {
+    if (user.password !== userDto.password) {
       throw new UnauthorizedException();
     }
 

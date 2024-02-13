@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Req } from '@nestjs/common';
 import { UserService } from './user.service';
 
 @Controller('users')
@@ -8,5 +8,10 @@ export class UserController {
   @Get()
   getUsers() {
     return this.userService.findAll();
+  }
+
+  @Get('profile')
+  getUserBySub(@Req() req: any) {
+    return this.userService.findBySub(req.user.sub);
   }
 }

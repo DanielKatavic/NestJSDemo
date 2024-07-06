@@ -2,10 +2,8 @@ import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { AppController } from './app.controller';
 import { AuthModule } from './auth/auth.module';
-import { CartItemModule } from './cart-item/cart-item.module';
-import { ProductModule } from './product/product.module';
 import { UserModule } from './user/user.module';
-import { CategoriesModule } from './categories/categories.module';
+import { CarModule } from './car/car.module';
 
 @Module({
   imports: [
@@ -15,9 +13,7 @@ import { CategoriesModule } from './categories/categories.module';
     ),
     UserModule,
     AuthModule,
-    ProductModule,
-    CartItemModule,
-    CategoriesModule,
+    CarModule,
   ],
   controllers: [AppController],
 })
